@@ -31,7 +31,7 @@ Before running the script, you must install the Slash to Search browser extensio
 
 The script relies on this extension to open the search interface. Without it, pressing `/` may not produce the expected result.
 
-**##Recommended Additional Extension**
+## **Recommended Additional Extension**
 
 You may also want to check out Cookie-clear, another project I made a while ago on an account that i lost.:
 
