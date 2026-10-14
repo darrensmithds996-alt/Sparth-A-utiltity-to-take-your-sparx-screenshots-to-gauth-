@@ -31,6 +31,14 @@ Before running the script, you must install the Slash to Search browser extensio
 
 The script relies on this extension to open the search interface. Without it, pressing `/` may not produce the expected result.
 
+**##Recommended Additional Extension**
+
+You may also want to check out Cookie-clear, another project I made a while ago on an account that i lost.:
+
+https://github.com/AlphaKennyBody12/Cookie-clear-Can-be-used-to-bypass-Gauth-limited-uses-
+
+Review the repository's README for installation instructions, compatibility information, and details about what the project does before using it.
+
 ## Setup
 
 1. Open your browser and sign in to Sparx Learning.
@@ -141,3 +149,5 @@ At the top of the script:
 Press `F8` to request that the current run stop.
 
 To exit the program entirely, focus the terminal running the script and press `Ctrl+C`.
+
+
