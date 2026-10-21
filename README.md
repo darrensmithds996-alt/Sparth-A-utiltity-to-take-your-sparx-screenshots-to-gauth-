@@ -1,216 +1,172 @@
 # Sparth-A-utiltity-to-take-your-sparx-screenshots-to-gauth-
 
-A Python automation script that switches between Sparx Learning and the Gauth website, captures a screenshot, and performs a sequence of keyboard and mouse actions.
+A Python automation script that switches between Sparx Learning and GauthMath, takes a screenshot of a Sparx question, and sends it to GauthMath using keyboard and mouse automation.
 
 ## Requirements
 
 - Windows
 - Python 3
-- A browser with Sparx Learning and the Gauth website available
-- The Slash to Search browser extension installed and configured to open the Gauth search interface when `/` is pressed
+- A supported browser with Sparx Learning and GauthMath
+- Slash to Search extension, configured so `/` opens GauthMath search
+- Cookie Clear extension, installed and enabled
 - The Python packages `pyautogui`, `pyperclip`, and `keyboard`
 
 ## Installation
 
-Install the required Python packages:
+1. Install Python 3 if you haven't already.
+2. Download or clone this repository.
+3. Open Command Prompt in the project folder.
+4. Install the required Python packages:
 
 ```bash
 py -m pip install pyautogui pyperclip keyboard
 ```
 
-Save the script as `sparx_helper.py` or another `.py` filename.
+## Required Extension: Slash to Search
 
-## Extension Setup
+The script uses `/` to open the GauthMath search interface. You must have the Slash to Search extension installed and configured for this to work.
 
-Before running the script, install the Slash to Search browser extension.
+Configure `/` to open GauthMath search before running the script.
 
-1. Open your browser's extension store and search for Slash to Search.
-2. Install the extension and enable it.
-3. Configure it so that pressing `/` opens the search interface on the Gauth website.
-4. Open the Gauth website and test that pressing `/` activates the search interface.
+## Required Extension: Cookie Clear
 
-If you downloaded the extension as a ZIP file instead, follow the instructions in the next section.
+Cookie Clear is a required part of this setup.
 
-The script relies on this extension to open the search interface. Without it, pressing `/` may not produce the expected result.
+Repository: https://github.com/AlphaKennyBody12/Cookie-clear-Can-be-used-to-bypass-Gauth-limited-uses-
 
-## Recommended Additional Extension
+To install it:
 
-You may also want to check out Cookie-clear, another project I made a while ago on an account I lost:
+1. Open the repository on GitHub.
+2. Click Code, then Download ZIP.
+3. Extract the downloaded ZIP file.
+4. Find the extracted extension folder and check that it contains `manifest.json`.
+5. Open your browser's extensions page:
+   - Chrome: `chrome://extensions`
+   - Edge: `edge://extensions`
+6. Enable Developer mode.
+7. Click Load unpacked.
+8. Select the extracted extension folder.
+9. Check that the extension is enabled.
 
-https://github.com/AlphaKennyBody12/Cookie-clear-Can-be-used-to-bypass-Gauth-limited-uses-
-
-### Should You Install It?
-
-If you want to try the project:
-
-### Step 1: Download and Extract the ZIP
-
-1. Download the extension's ZIP file from https://github.com/AlphaKennyBody12/Cookie-clear-Can-be-used-to-bypass-Gauth-limited-uses-.
-2. Open your Downloads folder.
-3. Right-click the ZIP file and select `Extract All...`.
-4. Choose a location and extract the files.
-5. Open the extracted folder and check that it contains a `manifest.json` file.
-
-Important: If `manifest.json` is inside another folder, select that inner folder when loading the extension, rather than its parent folder.
-
-### Step 2: Open Your Browser's Extensions Page
-
-For Google Chrome or any other Chromium Browser:
-
-1. Enter `broswer name://extensions` in the address bar.
-2. Press Enter.
-3. Turn on Developer mode using the toggle in the top-right corner.
-
-For Microsoft Edge:
-
-1. Enter `edge://extensions` in the address bar.
-2. Press Enter.
-3. Enable Developer mode.
-
-### Step 3: Load the Extension
-
-1. Click `Load unpacked`.
-2. Navigate to the folder containing the extracted extension files.
-3. Select that folder and click `Select Folder`.
-4. The extension should appear in your extensions list.
-5. If you want to change the shortcut for activating the extension, go to keyboard shortcuts on the left side and scroll down until you find the extension's section, and change the shortcut.
-### Step 4: Check That It Works
-
-1. Make sure the extension is enabled.
-2. Open the Gauth website.
-3. Press the shortcut that you have assigned to activate the extension.
-
-If the repository provides a ZIP containing source code rather than a browser extension, the files may need a different installation process. Check the repository's README before proceeding.
-
-Cookie-clear is a separate project and is not required for Sparth to run. Review its source code and permissions before installing it.
+Cookie Clear must be installed and enabled before running the script. Make sure you use extensions in accordance with the relevant websites' terms and conditions.
 
 ## Setup
 
-1. Open your browser and sign in to Sparx Learning.
-2. Make sure a browser tab has a URL beginning with `https://maths.sparx-learning.com/student/`.
-3. Open the Gauth website in the next tab.
-4. Make sure the Slash to Search extension is installed and working.
-5. Keep both tabs open next to each other, in their own window.
-6. Run the script:
-
-   ```bash
-   py sparx_helper.py
-   ```
-
-7. A new blank window opens, and the script prints:
-
-   ```text
-   Ready. CTRL+SHIFT+U to run, F8 to stop.
-   ```
-
-8. Press `Ctrl+Shift+U` to start the automation.
+1. Open Sparx Learning and navigate to the question you want to capture.
+2. Open GauthMath in another tab in the same browser window.
+3. Keep both tabs open. Sparx should be among the first two tabs for the script's initial search. If GauthMath isn't found, the script opens it and searches up to three tabs.
+4. Make sure Slash to Search is configured and Cookie Clear is installed and enabled.
+5. Run the Python script.
 
 ## Keyboard Shortcuts
 
-| Shortcut | Action |
-|---|---|
-| `Ctrl+Shift+U` | Starts the automation sequence. |
-| `F8` | Requests that the current sequence stop. |
-| `/` | Opens the Gauth search interface through the Slash to Search extension when the correct page is focused. |
-| PyAutoGUI failsafe | Move the mouse to the top-left corner of the screen to trigger PyAutoGUI's failsafe. |
+- `Ctrl + Shift + U`: Start the automation.
+- `F8`: Request that the script stop.
+- `F11`: Used by the script to toggle fullscreen.
+- `Win + Print Screen`: Takes a screenshot and saves it to the Windows Screenshots folder.
+- `/`: Opens GauthMath search through Slash to Search.
 
 ## What the Script Does
 
-When you press `Ctrl+Shift+U`, the script:
+1. Resets some browser developer-tools state using keyboard shortcuts.
+2. Searches the open tabs for Sparx Learning and GauthMath.
+3. Opens GauthMath if it cannot find an existing GauthMath tab.
+4. Switches to the Sparx tab.
+5. Toggles fullscreen and captures a screenshot using `Win + Print Screen`.
+6. Switches to the GauthMath tab.
+7. Uses `/` to open the search interface and pastes the clipboard contents.
+8. Waits eight seconds for the page to respond.
+9. Checks the visible page text for certain offer or limit-related phrases. If its conditions are met, it sends `Ctrl + Shift + K`. The result depends on your browser and its settings.
 
-1. Resets its DevTools-related keyboard state.
-2. Clicks near the top-centre of the screen to focus the browser.
-3. Cycles through browser tabs, checking their URLs for the Sparx Learning student page.
-4. Searches for a Gauth website tab. If one is not found, it opens Gauth in the browser.
-5. Switches to the adjacent tab and presses `F11`.
-6. Takes a Windows screenshot using `Win+PrintScreen`.
-7. Clicks near the top-centre of the screen and presses `Enter`.
-8. Switches to the next browser tab.
-9. Clicks the middle of the screen.
-10. Presses `/` to open the Gauth search interface using the Slash to Search extension.
-11. Pastes the current clipboard contents.
-12. Presses `F11` again.
-
-The exact result depends on the active browser tab, page layout, screen size, browser keyboard behaviour, and extension configuration.
+The script relies on screen coordinates, keyboard shortcuts, browser tabs, and clipboard contents. It does not independently verify that every action succeeded.
 
 ## Configuration
 
-At the top of the script:
+You can adjust these variables near the top of the Python file:
 
-- `SOURCE_URL_PREFIX` identifies the Sparx Learning student page.
-- `TARGET_URL` is the Gauth website opened if no matching tab is found.
-- `TARGET_URL_PREFIX` identifies the Gauth website tab.
-- `pyautogui.PAUSE` and the minimum duration/sleep settings control how quickly mouse and keyboard actions run.
-- `max_tabs=20` limits how many tabs the script checks when looking for a matching URL.
+```python
+SOURCE_URL_PREFIX = "https://maths.sparx-learning.com/student/"
+TARGET_URL = "https://www.gauthmath.com/"
+TARGET_URL_PREFIX = "https://www.gauthmath.com"
+```
+
+- `SOURCE_URL_PREFIX`: Identifies the Sparx Learning tab.
+- `TARGET_URL`: The page opened if GauthMath is not found.
+- `TARGET_URL_PREFIX`: Identifies the GauthMath tab.
+
+You can also adjust the timing settings:
+
+```python
+pyautogui.PAUSE = 0.01
+pyautogui.MINIMUM_DURATION = 0
+pyautogui.MINIMUM_SLEEP = 0
+```
+
+If actions happen too quickly on your computer, increase the pauses or waits in the script.
 
 ## Bookwork Checks
 
-For bookwork checks, you may need to locate the screenshots saved by Windows and review them separately.
+Screenshots taken with `Win + Print Screen` are normally saved in:
 
-1. Open your user's Pictures folder and navigate to the `Screenshots` folder.
-2. Look for the screenshots containing the relevant questions.
-3. Open the screenshots to identify the questions you need to review.
-4. If you need to refer to a question again for a bookwork check, upload the relevant screenshot to the Gauth website,.
+```text
+Pictures\Screenshots
+```
 
-Note: The script does not automatically organise screenshots by question or verify that a screenshot contains the correct information. Screenshot locations may vary depending on your Windows settings.
+To locate a screenshot:
+
+1. Open File Explorer.
+2. Go to Pictures, then Screenshots.
+3. Find the screenshot of the relevant Sparx question.
+4. Open GauthMath and use its image-upload option to upload the screenshot if you need to complete a bookwork check.
+
+You may need to select the correct screenshot manually. The script does not automatically locate and upload screenshots from the Screenshots folder.
 
 ## Important Notes
 
-- The script is designed to work with the Gauth website.
-- You must install and configure the Slash to Search browser extension for the `/` shortcut to work as expected.
-- Make sure the Gauth website is focused before testing the `/` shortcut.
-- The script uses screen coordinates, so changing display resolution, browser layout, or zoom may affect where it clicks.
-- The script reads the browser's current URL by copying it to the clipboard. This temporarily uses the clipboard.
-- `Win+PrintScreen` normally saves a screenshot through Windows. The script does not verify that the screenshot was successfully saved.
-- The `F8` shortcut sets a stop flag. The script checks that flag while searching through tabs, but it does not interrupt every action immediately.
-- The script assumes the relevant browser tabs are already open or can be opened successfully.
-- The script does not check whether the Gauth search interface successfully opened before pasting.
-- Browser shortcuts or other extensions may interfere with the `/` key.
-- Use extensions only from sources you trust.
-- Use automation in accordance with your school's rules and the services' terms.
+- Keep the browser window visible while the script runs.
+- Avoid moving the mouse or typing while automation is in progress.
+- The script clicks the middle and top of the screen, so it may interfere with other open applications.
+- `F8` requests a stop, but the script may not stop instantly if it is already inside an operation.
+- PyAutoGUI's failsafe is enabled. Moving the mouse to the top-left corner of the screen can trigger it.
+- Cookie Clear is required by this setup, but the Python script does not directly control its extension interface.
+- The script's `Ctrl + Shift + K` shortcut depends on your browser and settings. The code does not confirm that it cleared anything.
 
 ## Troubleshooting
 
-### It Cannot Find Sparx Learning
+### The script says "Sparx tab not found."
 
-- Check that you are signed in.
-- Make sure the tab URL begins with the configured `SOURCE_URL_PREFIX`.
-- Make sure the browser is focused and the tab is accessible.
+- Check that Sparx Learning is open.
+- Make sure its URL begins with `https://maths.sparx-learning.com/student/`.
+- Keep it among the first two tabs when starting the script.
 
-### It Opens Another Gauth Tab
+### The script says "GauthMath tab not found."
 
-- Check whether the existing Gauth tab's URL begins with `https://www.gauthmath.com/`.
-- Keep the relevant tabs open before running the script.
+- Check that GauthMath is open and that its URL begins with `https://www.gauthmath.com`.
+- Make sure the browser allows the site to open.
+- The script searches up to three tabs after attempting to open GauthMath.
 
-### The Search Interface Does Not Open
+### The screenshot isn't sent correctly
 
-- Make sure the Slash to Search extension is installed and enabled.
-- Check that the extension is configured to open the search interface when `/` is pressed.
-- Confirm that the Gauth website is focused.
-- Test the shortcut manually before running the automation.
-- Check whether another extension or website is intercepting the `/` key.
+- Check that Slash to Search is installed and configured to use `/`.
+- Make sure the clipboard contains the expected screenshot data.
+- Try increasing the pauses if your computer is slow.
 
-### The Extension ZIP Will Not Install
+### Cookie Clear doesn't work
 
-- Make sure you extracted the ZIP file first.
-- Confirm that the selected folder directly contains `manifest.json`.
-- Enable Developer mode on the browser's extensions page.
-- Check the extension's README for extra installation requirements.
-- If the extension reports an error, inspect the error message shown on the extensions page.
+- Check that the extension folder contains `manifest.json`.
+- Make sure you loaded the correct folder using Load unpacked.
+- Confirm that the extension is enabled in your browser.
 
-### It Clicks the Wrong Place
+### The script behaves unpredictably
 
-- Check your display resolution, browser zoom, and window layout.
-- The script relies on fixed screen positions.
-
-### A Keyboard Shortcut Behaves Unexpectedly
-
-- Make sure the browser has focus.
-- Check whether another application or extension is intercepting the shortcut.
-- Confirm that the browser is on the expected tab before running the script.
+- Keep the browser in the foreground.
+- Avoid interacting with the computer while the script runs.
+- Increase the sleep durations in the script if needed.
 
 ## Stopping the Script
 
-Press `F8` to request that the current run stop.
+Press `F8` to request a stop. If the script becomes unresponsive, use `Ctrl + C` in the Command Prompt window running it.
 
-To exit the program entirely, focus the terminal running the script and press `Ctrl+C`.
+## Disclaimer
+
+This project is provided for educational and personal automation purposes. Use it responsibly and follow the terms and conditions of the services and extensions involved.
